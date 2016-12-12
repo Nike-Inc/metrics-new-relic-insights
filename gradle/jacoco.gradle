@@ -1,0 +1,57 @@
+// ========== JACOCO SETUP -
+allprojects {
+    apply plugin: 'jacoco'
+    apply plugin: 'com.palantir.jacoco-coverage'
+    apply plugin: 'com.github.ksoichiro.console.reporter'
+
+    jacoco {
+        toolVersion = jacocoToolVersion
+    }
+}
+
+jacocoTestReport {
+    additionalSourceDirs = files(sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+    classDirectories =  files(sourceSets.main.output)
+    reports {
+        html.enabled = true
+        xml.enabled = true
+        csv.enabled = false
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: jacocoExclusions)
+        })
+    }
+}
+
+jacocoCoverageThresholdSetup()
+
+// consoleReporter is the task used for outputting code coverage numbers to the command line after a build.
+// See https://github.com/ksoichiro/gradle-console-reporter for full configuration details and options
+
+// Configure the common stuff for all projects
+allprojects {
+    consoleReporter {
+        jacoco {
+            // Disable by default - enabling for specific root/subprojects will be done below
+            enabled false
+
+            // We don't need the gradle-console-reporter plugin to adjust any of the jacoco settings
+            autoconfigureCoverageConfig false
+        }
+
+        junit {
+            enabled false
+        }
+
+        cobertura {
+            enabled false
+        }
+    }
+}
+consoleReporter {
+    jacoco {
+        enabled true
+    }
+}

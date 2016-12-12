@@ -1,0 +1,5 @@
+zorak:
+  COUNTER_COUNT: true
+moltar:
+  TIMER_MAX: true
+  TIMER_MIN: false
