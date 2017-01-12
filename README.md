@@ -1,5 +1,9 @@
 # New Relic Insights Dropwizard Metrics Collector
 
+[ ![Download](https://api.bintray.com/packages/nike/maven/metrics-new-relic-insights/images/download.svg) ](https://bintray.com/nike/maven/metrics-new-relic-insights/_latestVersion)
+[![][travis img]][travis]
+[![][license img]][license]
+
 This library provides a reporter for [Metrics](http://metrics.dropwizard.io/)
 that writes to [New Relic Insights](https://newrelic.com/insights).
 
@@ -53,3 +57,9 @@ data explorer like this:
 
 Insights has some metric naming restrictions, you should
 [read about them here](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/inserting-custom-events-new-relic-apm-agents#limits).
+
+[travis]:https://travis-ci.org/Nike-Inc/metrics-new-relic-insights
+[travis img]:https://api.travis-ci.org/Nike-Inc/metrics-new-relic-insights.svg?branch=master
+
+[license]:LICENSE.md
+[license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
