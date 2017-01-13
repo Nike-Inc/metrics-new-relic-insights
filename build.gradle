@@ -18,6 +18,7 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 apply plugin: 'project-report'
+apply plugin: 'com.jfrog.bintray'
 
 repositories {
     maven {
@@ -50,11 +51,6 @@ ext {
             reportThreshold 0.0, BRANCH
         }
     }
-
-    // BINTRAY STUFF
-    bintrayUser = project.hasProperty('bintrayUser') ? property('bintrayUser') : 'UNDEFINED'
-    bintrayKey = project.hasProperty('bintrayKey') ? property('bintrayKey') : 'UNDEFINED'
-    bintrayVersion = "$version"
 }
 
 
@@ -94,33 +90,9 @@ dependencies {
 
 ext.isReleaseVersion = !version.endsWith('SNAPSHOT')
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
 task wrapper(type: Wrapper) {
   gradleVersion = '2.6'
 }
-
-task createPom << {
-    pom {
-        project {
-            groupId groupId
-            artifactId artifactId
-            version version
-            inceptionYear '2016'
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
-            }
-        }
-    }.writeTo("pom.xml")
-}
-
 
 // ========== COMBO TEST REPORT - View the combined/merged report at: [project_root]/build/reports/tests/index.html
 apply from: file(rootProject.projectDir.getAbsolutePath() + '/gradle/junitComboTestReport.gradle')
