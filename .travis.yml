@@ -5,7 +5,8 @@ cache:
   directories:
   - "$HOME/.m2"
 after_success:
-- test "${TRAVIS_PULL_REQUEST}" == "false" && test "${TRAVIS_TAG}" != "" && ./gradlew bintrayUpload --stacktravtrace
+- test "${TRAVIS_PULL_REQUEST}" == "false" && test "${TRAVIS_TAG}" != "" && ./gradlew
+  bintrayUpload --stacktrace
 env:
   global:
   - secure: MtvMbfR87RyqZBh7pKPDYWDTV8uDjw/9p67P3CkpWFnsTX3ASrObBPXk/GmS1GEz9m3n3bUSywopGveyu5g5Vd7qmxy2RpwTcPITKJAUfxoZLUDOIxVxbLzjGgBr6u230ifD+B325dp1UI/s+5x9aKMIpXrtY4fRb5HN6SUJwYzHRopGZvULfwZAtTocXci3Yky4FmURI1YFNy0LdlAH2zWO4NafJrDt6zLWDbK3DqQLSvDyDpAGAxs0atXgS+kfluceN0Tf2R7qNKVru5hDsWrdIMgzp9E967Fph21mB8kHhX4fzZwsIpzXNeEKGiYNVe+ybObZ6ryImWfQsJW3j3PrhirSLgeqB+1Gv307MFihPLSnDbdfeBKuSYLD7SZoGgf/aokYvil5KM+Fb3WTRjOzNOqiqf61CmNk9WbSewZUM9yp4xXcC+RbbzW1zcs5rnvPiQcDzn20i+YhwnTSLg6WNOeAMLN9sYiAwevNTu5AlcKnaHN/xcoEcNwvroml9Hp227bWSvghgqexs6jxVcMbj5bZX+z+IFv7CRFWtqkV/wAm5GiacoImzpyWo8gQZ1tWkmaQZRP/g3QcScw/g3EoiPWQtwmA9pzNLoZtio0BIgaiTL4zJrdFp1xHb5hhTMr3Ec9UzolR4vG6LpX0qJXb/JsO/h9ajFtedflSYQM=
