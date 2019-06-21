@@ -27,7 +27,7 @@ Reference the Jar like this in your gradle build file:
 
 Set up your `MetricRegistry` like this:
 ```
-NewRelicReporter reporter = NewRelicReporter.forRegistry(registry)
+NewRelicInsightsReporter reporter = NewRelicInsightsReporter.forRegistry(registry)
                 .name("New Relic Metrics")
                 .filter(MetricFilter.ALL)
                 .rateUnit(TimeUnit.SECONDS)
